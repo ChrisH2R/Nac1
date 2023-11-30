@@ -8,19 +8,18 @@
 
     <Button
         android:id="@+id/clickButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="349dp"
+        android:layout_height="267dp"
         android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
         android:background="@android:color/darker_gray"
         android:text="Toca aquí para comenzar!"
+        android:textColorHighlight="#CDDC39"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/timerTextView"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.165" />
 
     <TextView
         android:id="@+id/timerTextView"
@@ -52,5 +51,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timerTextView" />
+
+    <Button
+        android:id="@+id/viewTopCpsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:text="Ver Records CPS"
+        android:textColor="#0087E1"
+        android:textSize="20sp"
+        android:textStyle="normal|bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

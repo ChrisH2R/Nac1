@@ -1,5 +1,6 @@
 plugins {
     id("com.android.application")
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -8,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.nac1"
-        minSdk = 30
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -33,6 +34,7 @@ android {
 }
 
 dependencies {
+    implementation("org.eclipse.paho:org.eclipse.paho.android.service:1.1.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5")
     implementation("com.google.firebase:firebase-database:20.3.0")
@@ -42,7 +44,6 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore:24.9.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
