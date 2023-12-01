@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Nac1"
+rootProject.name = "UltimateClicker"
 include(":app")
  
