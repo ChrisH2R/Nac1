@@ -7,11 +7,15 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
+
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private long startTime;
     private long elapsedTime;
     private Handler handler = new Handler();
+    private Animation animation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +41,18 @@ public class MainActivity extends AppCompatActivity {
         resetButton = findViewById(R.id.resetButton);
         viewTopCpsButton = findViewById(R.id.viewTopCpsButton);
 
+        // Cargar la animación desde el recurso XML
+        animation = AnimationUtils.loadAnimation(this, R.anim.button_click_animation);
+
         clickButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (countDownTimer == null) {
                     startCountdown();
                 }
+
+                // Aplicar la animación al hacer clic en el botón
+                view.startAnimation(animation);
 
                 clickCount++;
                 updateCps();
@@ -114,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         timerTextView.setText("Crono: 0.00  Toques/s: 0.00");
         clickButton.setText("Toca aquí para comenzar!");
     }
+
     private void sendResultsToMqtt(double cps) {
         new Thread(new Runnable() {
             @Override
@@ -152,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
+
     private void saveTopCps(double cps) {
         MyFirebase myFirebase = new MyFirebase();
         myFirebase.saveTopCps(cps);
